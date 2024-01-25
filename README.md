@@ -1,7 +1,7 @@
 # IDEA GENERAL
 La empresa BIOS Servi Tutti Incorporated, dedicada a brindar servicios de mantenimiento para el
 hogar, le ha encomendado a su equipo el desarrollo de un sistema web para la gestión de sus actividades.
-#DESCRIPCIÓN DEL PROBLEMA
+# DESCRIPCIÓN DEL PROBLEMA
 Los usuarios del sistema serán los administrativos, los clientes y los técnicos. De todos ellos se debe
 registrar su nombre de usuario, su clave de acceso, su nombre completo, y su dirección de correo
 electrónico. Todos los tipos de usuario serán registrados por un administrativo, por lo que el sistema
