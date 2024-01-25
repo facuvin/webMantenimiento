@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title> Bios Servi Tutti - Eliminar Administrativo </title>
+    </head>
+    <body th:remove="tag">
+        <h1>Eliminar Administrativo</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${administrativo}">
+            <p>¿Confirma que desea eliminar el administrativo con nombre de usuario <strong th:text="${administrativo.nombreUsuario}"></strong> (<span th:text="${administrativo.nombre+ ' ' + administrativo.apellido}"></span>)?</p>
+            <form method="post">
+                <div>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="submit" value="Eliminar" class="form-button"/>
+                </div>
+                <div>
+                    <a th:href="@{/administrativos}" title="Volver">Volver...</a>
+                </div>
+            </form>
+        </th:block>
+    </body>
+</html>

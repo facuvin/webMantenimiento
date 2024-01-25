@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle Informe</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del Informe</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${informe}">
+        
+
+            <ul>
+                <li><strong>Numero</strong>: <span th:text="${informe.numero}"></span></li>
+                <li><strong>Fecha y Hora</strong>: <span th:text="${informe.fechayHora}"></span></li>
+                <li><strong>Duracion</strong>: <span th:text="${informe.duracion}"></span></li>
+                <li><strong>Descripcion</strong>: <span th:text="${informe.descripcion}"></span></li>
+                <li th:if="${informe.horasExtra != null and informe.horasExtra ge 1}"><strong>Horas extra</strong>: <span th:text="${informe.horasExtra}"></span></li>
+            </ul>
+            <div>
+                <a th:href="@{/solicitudes}" title="Volver">Volver...</a>
+            </div>
+        </th:block>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Modificar Cliente</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Modificar Cliente</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${cliente}">
+            <div th:replace="~{fragmentos/formulario-cliente(textoBoton = 'Modificar', deshabilitarClave = true, foco = 'nombreCompleto')}">
+        </th:block>
+    </body>
+</html>

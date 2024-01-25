@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle de cliente</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del Cliente</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${cliente}">
+            <h2 th:text="${cliente.nombre}"></h2>
+
+            <ul>
+                <li><strong>Nombre de Usuario</strong>: <span th:text="${cliente.nombreUsuario}"></span></li>
+                <li><strong>Nombre</strong>: <span th:text="${cliente.nombre}"></span></li>
+                <li><strong>Apellido</strong>: <span th:text="${cliente.apellido}"></span></li>
+                <li><strong>Correo Electrónico</strong>: <span th:text="${cliente.eMail}"></span></li>
+                <li><strong>C.I.</strong>: <span th:text="${cliente.cedula}"></span></li>
+                <li><strong>Direccion</strong>: <span th:text="${cliente.direccion}"></span></li>
+                <li><strong>Telefono</strong>: <span th:text="${cliente.telefono}"></span></li>
+                
+            </ul> 
+            <div>
+                <a th:href="@{/clientes}" title="Volver">Volver...</a>
+            </div>
+
+        </th:block>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Registrar Cliente</title>
+    </head>
+    <body th:remove="tag">
+        <div class="texto-centro">
+            <h1>Registrar Cliente</h1>
+
+            <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+            <div th:replace="~{fragmentos/formulario-cliente('Registrar')}">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Solicitudes</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Solicitudes</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+
+
+        <table class="listado">
+            <tr>
+                <th>NUNMERO</th><th>FECHA Y HORA</th><th>CLIENTE</th><th>TECNICO ASIGNADO</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="s : ${solicitudes}">
+                <td th:text="${s.numero}" class="texto-centro"></td>
+                <td th:text="${#temporals.format(s.fechayHora, 'dd/MM/yyyy || HH:mm')}"></td>
+                <td th:text="${s.cliente.nombre}"></td>
+                <td><span th:if="${s.tecnico}" th:text="${s.tecnico.nombreUsuario}"></span><span th:unless="${s.tecnico}">SIN ASIGNAR</span></td>
+                <td>
+                    <a th:href="@{/solicitudes/{numeroSolicitud}(numeroSolicitud=${s.numero})}" title="Ver Detalle"><i class="icono icono-ver"></i>&nbsp;&nbsp;</a>
+                    <a th:unless="${s.tecnico}" th:href="@{/solicitudes/asignar/{id}(id=${s.numero})}" title="Asignar Tecnico"><i class="icono icono-tecnico"></i>&nbsp;&nbsp;</a>
+                    <a th:if="${s.informe}" th:href="@{/informes/{numeroInforme}(numeroInforme=${s.informe.numero})}" title="Ver informe"><i class="icono icono-verinforme" title="Ver Informe"><i class="icono icono-documento"></i></a>
+                </td>
+            </tr>
+        </table>
+
+        <p th:if="${solicitudes}">Cantidad de solicitudes: <span th:text="${solicitudes.size()}"></span></p>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/solicitudes';
+                }
+            });
+
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

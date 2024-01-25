@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Solicitudes Asignadas</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Solicitudes Asignadas</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+        <table class="listado">
+            <tr>
+                <th>NUNMERO</th><th>FECHA Y HORA</th><th>DESCPRIPCION</th><th>HORARIO DESDE</th><th>HASTA</th><th>CLIENTE</th><th>DIRECCION</th><th>AGREGAR INFORME</th>
+            </tr>
+            <tr th:each="s : ${solicitudes}">
+                <td th:text="${s.numero}" class="texto-centro"></td>
+                <td th:text="${#temporals.format(s.fechayHora, 'dd/MM/yyyy HH:mm')}"></td>
+                <td th:text="${s.descripcion}"></td>
+                <td th:text="${s.horaInicio}"></td>
+                <td th:text="${s.horaFin}"></td>
+                <td th:text="${s.cliente.nombre}"></td>
+                <td th:text="${s.cliente.direccion}"></td>
+                
+                <td class="texto-centro">
+                    <a th:unless="${s.informe}" th:href="@{/informes/registrar/{numero}(numero=${s.numero})}" title="Registrar Informe"><i class="icono icono-agregar"></i></a>
+                </td>
+
+            </tr>
+        </table>
+
+        <p th:if="${solicitudes}">Cantidad de solicitudes: <span th:text="${solicitudes.size()}"></span></p>
+
+        <script>
+            // document.getElementById('formularioBusqueda').addEventListener('search', function() {
+            //     if (!document.getElementById('criterio').value) {
+            //         window.location = '/clientes';
+            //     }
+            // });
+
+            // document.getElementById('criterio').focus();
+            // document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Cancelar Contrato</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Cancelar Contrato</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <div>
+            <form method="post" th:object="${cancelacion}" class="form">
+                <div>
+                    <label for="numeroContrato">Numero de Contrato a cancelar</label>
+                    <input type="number" th:value="${numeroContrato}" disabled />
+                </div>
+                <div>
+                    <label for="numero">Numero</label>
+                    <input type="number" th:field="*{numero}" />
+                    <p th:errors="*{numero}" class="error"></p>
+                </div>
+                <div>
+                    <label for="fecha">Fecha de cancelacion</label>
+                    <input type="date" th:field="*{fecha}" />
+                    <p th:errors="*{fecha}" class="error"></p>
+                </div>
+                <div>
+                    <label for="motivo">Motivo</label>
+                    <input type="text" th:field="*{motivo}" />
+                    <p th:errors="*{motivo}" class="error"></p>
+                </div>
+                <div>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="submit" th:value="Aceptar" class="form-button" />
+                </div>
+                <div>
+                    <a th:href="@{/clientes}" title="Volver">Volver</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

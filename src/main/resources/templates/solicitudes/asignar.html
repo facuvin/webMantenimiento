@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Asignar Tecnico</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Asignar tecnico</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form id="formularioBusqueda">
+            <div>
+                <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="nombre de usuario o completo"> 
+                <input type="submit" value="Buscar" class="form-button">
+            </div>
+        </form>
+        
+        <form  method="post " th:object="${visita}">
+        <h2>Competencias Requeridas</h2>
+
+        <th:block th:each="c : *{competencias}">
+            <li><span th:text="${c.nombre}"></span></li>
+
+        </th:block>
+
+        <table class="listado">
+            <tr>
+                <th>NOMBRE de USUARIO</th><th>NOMBRE</th><th>APELLIDO</th><th>CORREO ELECTRÓNICO</th><th>TELEFONO</th><th>COMPETENCIAS</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="t : ${tecnicos}">
+                <td th:text="${t.nombreUsuario}" class="texto-centro"></td>
+                <td th:text="${t.nombre}"></td>
+                <td th:text="${t.apellido}"></td>
+                <td th:text="${t.eMail}"></td>
+                <td th:text="${t.telefono}"></td>
+                <td>
+                    <div>
+                        <ul>
+                            <th:block th:each="c : ${t.competencias}">
+                                <li th:text="${c.nombre}"></li>
+                            </th:block>
+                        </ul>
+                    </div>
+                </td>           
+                <td>
+                    <a th:href="@{'/solicitudes/asignar/' + ${visita.numero} + '/' + ${t.nombreUsuario}}"><i class="icono icono-tecnico"></i>&nbsp;&nbsp;</a>
+                </td>
+            </tr>
+            
+        
+        </table>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div>
+            <a th:href="@{/solicitudes}" title="Volver">Volver...</a>
+        </div>
+</form>
+        <script>
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>
+
+

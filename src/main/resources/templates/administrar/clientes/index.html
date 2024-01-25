@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Clientes</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Clientes</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form id="formularioBusqueda">
+            <div>
+                <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="nombre de usuario, nombre o apellido"> 
+                <input type="submit" value="Buscar" class="form-button">
+            </div>
+        </form>
+
+        <p><a th:href="@{/clientes/registrar}" title="Agregar"><i class="icono icono-agregar"></i></a></p>
+
+
+        <table class="listado">
+            <tr>
+                <th>NOMBRE de USUARIO</th><th>NOMBRE</th><th>APELLIDO</th><th>CORREO ELECTRÓNICO</th><th>CEDULA</th><th>DIRECCION</th><th>TELEFONO</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="c : ${clientes}">
+                <td th:text="${c.nombreUsuario}" class="texto-centro"></td>
+                <td th:text="${c.nombre}"></td>
+                <td th:text="${c.apellido}"></td>
+                <td th:text="${c.eMail}"></td>
+                <td th:text="${c.cedula}"></td>
+                <td th:text="${c.direccion}"></td>
+                <td th:text="${c.telefono}"></td>
+
+                <td>
+                    <a th:href="@{/clientes/{nombreUsuario}(nombreUsuario=${c.nombreUsuario})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/clientes/modificar(nombreUsuario=${c.nombreUsuario})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/contratos/cliente/{nombreCliente}(nombreCliente=${c.nombreUsuario})}" title="Ver Contratos"><i class="icono icono-contrato"></i></a>
+                    <a th:href="@{/pagos/cliente/{nombreCliente}(nombreCliente=${c.nombreUsuario})}" title="Ver Pagos"><i class="icono icono-pago"></i></a>
+            </tr>
+        </table>
+
+        <p>Cantidad de clientes: <span th:text="${clientes.size()}"></span></p>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/clientes';
+                }
+            });
+        
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

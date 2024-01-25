@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>BIOS Servi Tutti - Página No Encontrada</title>
+    </head>
+    <body th:remove="tag">
+        <div class="texto-centro">
+            <h1>Página No Encontrada</h1>
+
+            <p>No se encontró la página solicitada.</p>
+        </div>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+    </body>
+</html>

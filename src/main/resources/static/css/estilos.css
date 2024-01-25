@@ -1,0 +1,411 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3498db, #c2e59c);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+}
+
+.form {
+    max-width: 400px; /* Ancho máximo para evitar que sea demasiado ancho */
+    width: 100%; /* Ancho del 100% para que se ajuste al contenedor padre */
+    margin: 0 auto; /* Margen automático en los lados para centrarlo */
+    padding: 20px;
+    border: 1px solid #3498db;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #34db74, #9ca2e5); /* Fondo en degradado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff; /* Cambia el color del texto para que sea legible en el fondo de degradado */
+}
+
+.form h1 {
+    text-align: center;
+    color: #3498db;
+}
+
+.form p {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.form label {
+    display: block;
+    margin: 10px 0;
+    color: #666;
+}
+
+.form textarea,
+.form select,
+.form input[type="time"] {
+    width: 93%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form .select-multiple {
+    height: 100px;
+}
+
+.form .error {
+    color: #e74c3c;
+}
+
+.form-button, button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+}
+
+.form button:hover {
+    background-color: #2980b9;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.texto-izquierda,
+.texto-centro,
+.texto-derecha {
+    text-align: left;
+}
+
+.texto-centro {
+    text-align: center;
+}
+
+.texto-derecha {
+    text-align: right;
+}
+.body {
+    background: linear-gradient(135deg, #3498db, #c2e59c);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+}
+a {
+    text-decoration: none;
+    color: #191d32;
+    font-weight: bold;
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #3498db, #c2e59c); 
+    border-radius: 5px;
+    
+}
+.body h1 {
+    text-align: center;
+    color: #0c161d;
+}
+
+a:hover {
+    background: linear-gradient(135deg, #2980b9, #a9d67240); 
+    color: #fff; 
+}
+
+
+div.contenedor-centrado {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+i.icono {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.menu-principal,
+.menu-secundario,
+.icono-entrar,
+.icono-salir,
+i.icono-atras {
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+i.icono-agregar {
+    background-image: url("../imagenes/iconos/mas.png");
+}
+
+i.icono-ver {
+    background-image: url("../imagenes/iconos/icons8-eye-24.png");
+}
+
+i.icono-modificar {
+    background-image: url("../imagenes/iconos/icons8-edit-24.png");
+}
+
+i.icono-eliminar {
+    background-image: url("../imagenes/iconos/icons8-remove-24.png");
+}
+
+i.icono-cerrar {
+    background-image: url("../imagenes/iconos/close.png");
+}
+
+i.icono-menu {
+    background-image: url("../imagenes/iconos/icons8-menu-48.png");
+}
+
+i.icono-asignar {
+    background-image: url("../imagenes/iconos/icons8-top-menu-48.png");
+}
+
+i.icono-informe {
+    background-image: url("../imagenes/iconos/icons8-top-menu-48.png");
+}
+
+i.icono-contrato {
+    background-image: url("../imagenes/iconos/icons8-contract-50.png");
+}
+i.icono-documento {
+    background-image: url("../imagenes/iconos/icons8-document-50.png");
+}
+
+i.icono-subir {
+    background-image: url("../imagenes/iconos/icons8-level-up-24.png");
+}
+
+i.icono-tecnico {
+    background-image: url("../imagenes/iconos/icons8-plumber-48.png");
+}
+i.icono-pago {
+    background-image: url("../imagenes/iconos/icons8-money-48.png");
+}
+
+.menu-principal {
+    background-image: url("../imagenes/iconos/icons8-top-menu-48.png");
+}
+
+.menu-secundario {
+    background-image: url("../imagenes/iconos/icons8-menu-48.png");
+}
+
+.icono-entrar {
+    background-image: url("../imagenes/iconos/icons8-enter-48.png");
+}
+
+.icono-salir {
+    background-image: url("../imagenes/iconos/icons8-logout-48.png");
+}
+
+i.icono-atras {
+    background-image: url("../imagenes/iconos/icons8-volver-50.png");
+}
+form div{
+    margin-top: 1.5em;
+}
+
+label, legend {
+    font-weight: bold;
+}
+
+div > label:first-child {
+    display: block;
+    margin-bottom: .25em;
+}
+
+fieldset {
+    display: inline-block;
+    border: 1px solid gray;
+}
+
+input[type=text], input[type=password], input[type=number], input[type=date], input[type=email], input[type=tel], input[type=search], input[type=submit], select {
+    padding: 3px;
+}
+
+input[type=checkbox], input[type=radio] {
+    accent-color: #3498db;
+}
+
+form.en-linea{
+    display: inline-block;
+}
+
+.header.cabezal-principal {
+    height: 160px;
+    padding: 20px;
+    background: linear-gradient(135deg, #343cdb, #9ca8e5);
+    background-image: url(/imagenes/cabezal2.png);
+    background-size: 150px;
+    background-position: top left;
+    text-align: center;
+    background-repeat: no-repeat;
+    color: rgb(1, 3, 35);
+}
+
+header.cabezal-principal h1 {
+    margin: 0;
+    position: sticky;
+    top: 0;
+    font-size: 3em;
+    text-align: center;
+    color: #3498db;
+}
+
+nav.navegacion-principal {
+    height: 40px;
+    position: sticky;
+    top: 0;
+    background-color: #3498db;
+}
+
+nav.navegacion-principal > * {
+    float: right;
+}
+
+nav.navegacion-principal > *:first-child {
+    float: left;
+}
+
+nav.navegacion-principal ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav.navegacion-principal ul li {
+    position: relative;
+    display: block;
+    float: left;
+    white-space: nowrap;
+}
+
+nav.navegacion-principal li a {
+    display: block;
+    padding: 0 10px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav.navegacion-principal li:hover a {
+    background-color: #3498db;
+    transition: background-color 0.33s;
+}
+
+nav.navegacion-principal li ul {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    background-color: #3498db;
+    transition: visibility 0s, opacity 0.33s;
+}
+
+nav.navegacion-principal ul ~ ul:last-child ul {
+    right: 0px;
+}
+
+nav.navegacion-principal li:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav.navegacion-principal li:hover li {
+    float: none;
+}
+
+nav.navegacion-principal li:hover li:hover a {
+    background-color: #3498db;
+}
+
+main.contenido {
+    margin: 20px;
+}
+
+table.listado {
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+table.listado,
+table.listado th,
+table.listado td {
+    border: 1px solid #ccc;
+}
+
+table.listado td,
+table.listado th {
+    padding: 5px;
+}
+
+table.listado th {
+    background-color: #3498db;
+    color: white;
+}
+
+hr.separador-detalle {
+    margin-top: 40px;
+}
+
+img.imagen-contrato {
+    min-width: 100px;
+    min-height: 100px;
+    height: 200px;
+    border: 3px solid #ccc;
+    object-fit: cover;
+}
+
+.footer {
+    border-radius: 2px;
+    border-color: #9ca2e5;
+    border-block-start: #062031;
+    background-color: linear-gradient(115deg, #464646, #404f9a);
+    color: #09090a;
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: left;
+    margin-right: 20px;
+}
+
+.footer a {
+    text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
+    color: #191d32; /* Color de texto */
+    font-weight: bold; /* Negrita */
+    /* No necesitas el fondo, borde ni sombra aquí */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Agrega un subrayado al pasar el mouse para indicar que son enlaces */
+    color: #2980b9; /* Cambia el color al pasar el mouse para resaltar el enlace */
+}
+.footer .footer-link {
+    text-decoration: none;
+    color: #191d32;
+    font-weight: bold;
+    padding: 5px 10px;
+    background: none
+}
+
+.footer .footer-link:hover {
+    background: linear-gradient(135deg, #062031, #a9d672);
+    color: #fff;
+}

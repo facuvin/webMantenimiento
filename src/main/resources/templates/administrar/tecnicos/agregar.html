@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Agregar Tecnico</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Agregar Tecnico</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <div th:replace="~{fragmentos/formulario-tecnico('Agregar')}" />
+    </body>
+</html>

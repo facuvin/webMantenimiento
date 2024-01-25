@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title> Bios Servi Tutti - Administrativos </title>
+    </head>
+    <body th:remove="tag">
+        <h1>Administrativos</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form id="formularioBusqueda">
+            <div>
+                <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="nombre de usuario, nombre o apellido"> 
+                <input type="submit" value="Buscar" class="form-button">
+            </div>
+        </form>
+
+        <p><a th:href="@{/administrativos/agregar}" title="Agregar"><i class="icono icono-agregar"></i></a></p>
+
+
+        <table class="listado">
+            <tr>
+                <th>NOMBRE de USUARIO</th><th>NOMBRE</th><th>APELLIDO</th><th>CORREO ELECTRÓNICO</th><th>FECHA de INGRESO</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="a : ${administrativos}">
+                <td th:text="${a.nombreUsuario}" class="texto-centro"></td>
+                <td th:text="${a.nombre}"></td>
+                <td th:text="${a.apellido}"></td>
+                <td th:text="${a.eMail}"></td>
+                <td th:text="${#temporals.format(a.fechaIngreso, 'dd/MM/yyyy')}" class="texto-centro"></td>
+                <td>
+                    <a th:href="@{/administrativos/{nombreUsuario}(nombreUsuario=${a.nombreUsuario})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/administrativos/modificar(nombreUsuario=${a.nombreUsuario})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/administrativos/eliminar(nombreUsuario=${a.nombreUsuario})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+                </td>
+            </tr>
+        </table>
+
+        <p>Cantidad de administrativos: <span th:text="${administrativos.size()}"></span></p>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/administrativos';
+                }
+            });
+
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

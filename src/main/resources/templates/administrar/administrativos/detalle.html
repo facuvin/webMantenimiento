@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle de administrativo</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del Administrativo</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${administrativo}">
+            <h2 th:text="${administrativo.nombre}"></h2>
+            <ul>
+                <li><strong>Nombre de Usuario</strong>: <span th:text="${administrativo.nombreUsuario}"></span></li>
+                <li><strong>Nombre</strong>: <span th:text="${administrativo.nombre}"></span></li>
+                <li><strong>Apellido</strong>: <span th:text="${administrativo.apellido}"></span></li>
+                <li><strong>Correo Electrónico</strong>: <span th:text="${administrativo.eMail}"></span></li>
+                <li><strong>Fecha de ingreso</strong>: <span th:text="${administrativo.fechaIngreso}"></span></li>            
+            </ul>
+            <div>
+                <a th:href="@{/administrativos}" title="Volver">Volver...</a>
+            </div>
+        </th:block>
+    </body>
+</html>

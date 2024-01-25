@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle de tecnico</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del Tecnico</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${tecnico}">
+            <h2 th:text="${tecnico.nombre}"></h2>
+            <ul>
+                <li><strong>Nombre de Usuario</strong>: <span th:text="${tecnico.nombreUsuario}"></span></li>
+                <li><strong>Nombre</strong>: <span th:text="${tecnico.nombre}"></span></li>
+                <li><strong>Apellido</strong>: <span th:text="${tecnico.apellido}"></span></li>
+                <li><strong>Correo Electrónico</strong>: <span th:text="${tecnico.eMail}"></span></li>
+                <li><strong>Telefono</strong>: <span th:text="${tecnico.telefono}"></span></li>
+                <li><strong>Competencias</strong>:
+                    <ul>
+                        <th:block th:each="c : ${tecnico.competencias}">
+                            <li th:text="${c.nombre}"></li>
+                        </th:block>
+                    </ul>
+                </li>               
+            </ul>
+            <div>
+                <a th:href="@{/tecnicos}" title="Volver">Volver...</a>
+            </div>
+        </th:block>
+    </body>
+</html>

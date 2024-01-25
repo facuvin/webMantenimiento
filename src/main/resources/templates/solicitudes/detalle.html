@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle Solicitud</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del la Solicitud</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${visita}">
+        
+
+            <ul>
+                <li><strong>id</strong>: <span th:text="${visita.numero}"></span></li>  
+                <li><strong>Fecha y Hora</strong>: <span th:text="${visita.fechayHora}"></span></li>
+                <li><strong>Competencias</strong></li> 
+                <th:block th:each="v : ${visita.competencias}">
+                    <li><span th:text="${v.nombre}"></span></li>
+                     </th:block>
+                <li><strong>Descripcion</strong>: <span th:text="${visita.descripcion}"></span></li>
+                <li><strong>Hora de inicio</strong>: <span th:text="${visita.horaInicio}"></span></li>
+                <li><strong>Hora de fin</strong>: <span th:text="${visita.horaFin}"></span></li>
+                <li><strong>Cliente</strong>: <span th:text="${visita.cliente.nombre}"></span></li>
+                <li><strong>Telefono</strong>: <span th:text="${visita.cliente.telefono}"></span></li>
+                <th:block th:if="${visita.tecnico}">
+                <li><strong>Tecnico</strong>: <span th:text="${visita.tecnico.nombreUsuario}"></span></li>
+                </th>
+                              
+            </ul>
+        </th:block>
+        <div>
+            <a th:href="@{/solicitudes}" title="Volver">Volver...</a>
+        </div>
+    </body>
+</html>

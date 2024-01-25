@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title> Bios Servi Tuti - Eliminar Competencia</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Confirmar tecnico asignado</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form method="post" enctype="multipart/form-data" class="form">
+            <div th:object="${visita}"></div>
+            <div th:object="${tecnico}"></div>
+            <th:block th:if="${visita} and ${tecnico}">
+                <p>¿Confirma que desea asignar la visita Nº<strong th:text="${visita.numero}"></strong> a el tecnico <strong th:text="${tecnico.nombre}">?</strong></p>
+                <div>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="submit" value="Confirmar" class="form-button"/>
+                </div>
+            </th:block>
+            <div>
+                <a th:href="@{/solicitudes}" title="Volver">Volver...</a>
+            </div>
+        </form>
+    </body>
+</html>

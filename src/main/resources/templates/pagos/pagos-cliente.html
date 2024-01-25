@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Pagos del Cliente</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Pagos del Cliente</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <p><a th:href="@{/pagos/registrar/{nombreCliente}(nombreCliente=${nombreCliente})}" title="Agregar"><i class="icono icono-agregar"></i></a></p>
+        <table class="listado">
+            <tr>
+                <th>NUMERO</th><th>FECHA</th><th>IMPORTE</th><th>DESCRIPCION</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="p : ${pagos}">
+                <td th:text="${p.numero}" class="texto-centro"></td>
+                <td th:text="${p.fecha}"></td>
+                <td th:text="${p.importe}"></td>
+                <td th:text="${p.descripcion}"></td>
+                
+                <td>
+                    <a th:href="@{/pagos/detalle/{numeroPago}(numeroPago=${p.numero})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+
+        <p>Cantidad de pagos: <span th:text="${pagos.size()}"></span></p>
+        <div>
+            <a th:href="@{/clientes}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/contratos';//arreglar
+                }
+            });
+
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

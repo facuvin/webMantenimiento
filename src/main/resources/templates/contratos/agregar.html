@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Registrar Contrato</title>
+    </head>
+    <body th:remove="tag">
+        
+        <h1>Registrar Contrato</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <div>
+            <form method="post" enctype="multipart/form-data" th:object="${contrato}" class="form">
+                <div>
+                    <label for="nombreUsuario">Cliente</label>
+                    <input type="text" name="nombreUsuario" th:value="${nombreCliente}" disabled />
+                </div>
+                <div>
+                    <label for="numero">Numero de Contrato</label>
+                    <input type="number" th:field="*{numero}" />
+                    <p th:errors="*{numero}" class="error"></p>
+                </div>
+                <div>
+                    <label for="fechaFirma">Fecha de firma</label>
+                    <input type="date" th:field="*{fechaFirma}" />
+                    <p th:errors="*{fechaFirma}" class="error"></p>
+                </div>
+                <div>
+                    <label for="imagen">Imagen</label>
+                    <input type="file" name="imagen" id="imagen" accept="image/*" class="form-button"/>
+                </div>
+                <div>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    <input type="submit" th:value="Agregar" class="form-button" />
+                </div>
+                <div>
+                    <a th:href="@{'/contratos/cliente/' + ${nombreCliente}}" title="Volver">Volver</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

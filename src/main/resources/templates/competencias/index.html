@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Competencia</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Competencia</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form id="formularioBusqueda">
+            <div>
+                <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="id o nombre"> 
+                <input type="submit" value="Buscar" class="form-button">
+            </div>
+        </form>
+
+        <p><a th:href="@{/competencias/agregar}" title="Agregar"><i class="icono icono-agregar"></i></a></p>
+
+
+        <table class="listado">
+            <tr>
+                <th>Id</th><th>NOMBRE</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="c : ${Competencia}">
+                <td th:text="${c.id}" class="texto-centro"></td>
+                <td th:text="${c.nombre}"></td>
+                <td>
+                    <a th:href="@{/competencias/modificar(id=${c.id})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/competencias/eliminar(id=${c.id})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>&nbsp;&nbsp;
+            </tr>   
+        </table>
+
+        <p>Cantidad de competencias: <span th:text="${Competencia.size()}"></span></p>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/competencias';
+                }
+            });
+
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>

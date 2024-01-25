@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Detalle de contrato</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Detalle del Contrato</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <th:block th:if="${contrato}" th:object="${contrato}">
+            <ul>
+                <li><strong>Numero de Contrato</strong>: <span th:text="*{numero}"></span></li>
+                <li><strong>Fecha de Firma</strong>: <span th:text="*{fechaFirma}"></span></li>
+                <li><strong>Cliente</strong>: <span th:text="*{cliente.nombreUsuario}"></span></li>
+                <ul>
+                    <th:block th:if="*{cancelacion}" >
+                        <h2><strong>Cancelacion</strong></h2>
+                        <li><strong>Numero de Cancelacion</strong>: <span th:text="*{cancelacion.numero}"></span></li>
+                        <li><strong>Fecha</strong>: <span th:text="*{cancelacion.fecha}"></span></li>
+                        <li><strong>Motivo</strong>: <span th:text="*{cancelacion.motivo}"></span></li>
+                    </th:block>
+                </ul>
+            </ul>
+            <img th:if="${contrato.tieneImagen}" th:src="@{/imagenes-contratos/{numero}.png(numero=${contrato.numero})}" alt="Imagen del contrato" class="imagen-contrato" />
+            <img th:unless="${contrato.tieneImagen}" th:src="@{/imagenes-contratos/imagen-no-disponible.png}" alt="Imagen no Disponible" class="imagen-contrato" />
+
+        </th:block>
+    </body>
+</html>

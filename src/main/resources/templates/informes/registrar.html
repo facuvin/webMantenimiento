@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Registrar informe</title>
+    </head>
+    <body th:remove="tag">
+        <form method="post" th:object="${informe}" class="form">
+            <h1>Registrar informe</h1>
+
+            <div>
+                <p>Por favor, ingrese la fecha y hora de finalización de la visita.</p>
+                <label for="fechayHora">Fecha y Hora:</label>
+                <input type="datetime-local" th:field="*{fechayHora}" />
+                <p th:errors="*{fechayHora}" class="error"></p>
+            </div>
+            <div>
+                <p>Por favor, proporcione una descripción detallada de las reparaciones realizadas.</p>
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" id="descripcion" placeholder="Escriba aquí..." th:field="*{descripcion}"></textarea>
+                <p th:errors="*{descripcion}" class="error"></p>
+            </div>
+            <div>
+                <p>Por favor, introduzca el número de horas transcurridas durante la visita.</p>
+                <label for="duracion">Duracion en Horas</label>
+                <input type="number" th:field="*{duracion}" />
+                <p th:errors="*{duracion}" class="error"></p>
+            </div>
+           
+            <div>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <input type="submit" th:value="Registrar" class="form-button"/>
+            </div>
+            <div>
+                <a th:href="@{/solicitudes/tecnico}" title="Volver">Volver...</a>
+            </div>  
+        </form>
+
+    </body>
+</html>

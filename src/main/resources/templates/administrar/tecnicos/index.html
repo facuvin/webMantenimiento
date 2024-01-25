@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragmentos/plantilla-maestra::html(~{::title}, ~{::body})}">
+    <head>
+        <title>Bios Servi Tutti - Tecnicos</title>
+    </head>
+    <body th:remove="tag">
+        <h1>Tecnicos</h1>
+
+        <p th:replace="~{fragmentos/parrafo-mensaje}"></p>
+
+        <form id="formularioBusqueda">
+            <div>
+                <input type="search" name="criterio" th:value="${param.criterio}" id="criterio" placeholder="nombre de usuario, nombre o apellido"> 
+                <input type="submit" value="Buscar" class="form-button">
+            </div>
+        </form>
+
+        <p><a th:href="@{/tecnicos/agregar}" title="Agregar"><i class="icono icono-agregar"></i></a></p>
+
+
+        <table class="listado">
+            <tr>
+                <th>NOMBRE de USUARIO</th><th>NOMBRE</th><th>APELLIDO</th><th>CORREO ELECTRÓNICO</th><th>TELEFONO</th><th>COMPETENCIAS</th><th>ACTIVO</th><th>OPCIONES</th>
+            </tr>
+            <tr th:each="t : ${tecnicos}">
+                <td th:text="${t.nombreUsuario}" class="texto-centro"></td>
+                <td th:text="${t.nombre}"></td>
+                <td th:text="${t.apellido}"></td>
+                <td th:text="${t.eMail}"></td>
+                <td th:text="${t.telefono}"></td>
+                <td>
+                    <div>
+                        <ul>
+                            <th:block th:each="c : ${t.competencias}">
+                                <li th:text="${c.nombre}"></li>
+                            </th:block>
+                        </ul>
+                    </div>
+                </td>
+                <td class="texto-centro"><p th:if="${t.activo}">SI</p><p th:unless="${t.activo}">NO</p></td>
+                <td>
+                    <a th:href="@{/tecnicos/{nombreUsuario}(nombreUsuario=${t.nombreUsuario})}" title="Ver Detalle"><i class="icono icono-ver"></i></a>&nbsp;&nbsp;
+                    <a th:href="@{/tecnicos/modificar(nombreUsuario=${t.nombreUsuario})}" title="Modificar"><i class="icono icono-modificar"></i></a>&nbsp;&nbsp;
+                    <a th:if="${t.activo}" th:href="@{/tecnicos/eliminar(nombreUsuario=${t.nombreUsuario})}" title="Eliminar"><i class="icono icono-eliminar"></i></a>
+                </td>
+            </tr>
+        </table>
+
+        <p>Cantidad de tecnicos: <span th:text="${tecnicos.size()}"></span></p>
+        <div>
+            <a th:href="@{/}" title="Volver">Volver...</a>
+        </div>
+
+        <script>
+            document.getElementById('formularioBusqueda').addEventListener('search', function() {
+                if (!document.getElementById('criterio').value) {
+                    window.location = '/tecnicos';
+                }
+            });
+
+            document.getElementById('criterio').focus();
+            document.getElementById('criterio').select();
+        </script>
+    </body>
+</html>
